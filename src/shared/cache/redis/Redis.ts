@@ -1,21 +1,29 @@
-import { ICache } from "..";
-import { ICreateClientRedis } from "./createClientRedis";
+import { Redis as CreateClient } from "ioredis";
 import { RateLimiterRedis } from "rate-limiter-flexible";
 import { inject, injectable } from "tsyringe";
+import { ICache } from "../models/ICache";
+
+export interface IRedis {
+    client: CreateClient;
+}
 
 @injectable()
 export class Redis implements ICache {
+    readonly client: CreateClient;
+
     constructor(
-        @inject("createClientRedis")
-        private redis: ICreateClientRedis,
-    ) {}
+        @inject("CreateClient")
+        redis: IRedis,
+    ) {
+        this.client = redis.client;
+    }
 
     public async save<T>(key: string, value: T): Promise<void> {
-        await this.redis.client.set(key, JSON.stringify(value));
+        await this.client.set(key, JSON.stringify(value));
     }
 
     public async recover<T>(key: string): Promise<T | null> {
-        const data = await this.redis.client.get(key);
+        const data = await this.client.get(key);
 
         if (!data) return null;
 
@@ -23,13 +31,13 @@ export class Redis implements ICache {
     }
 
     public async invalidate(key: string): Promise<void> {
-        await this.redis.client.del(key);
+        await this.client.del(key);
     }
 
     public async rateLimiter(key: string): Promise<void> {
         try {
             const limiter = new RateLimiterRedis({
-                storeClient: this.redis.client,
+                storeClient: this.client,
                 keyPrefix: "reatelimit",
                 points: 5,
                 duration: 1,

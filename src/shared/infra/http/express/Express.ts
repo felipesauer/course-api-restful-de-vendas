@@ -8,13 +8,13 @@ import express, {
 } from "express";
 import cors from "cors";
 import { errors } from "celebrate";
-import { rateLimiter } from "./middlewares/";
-import { IHttp } from "..";
-import routes from "./routes";
+import { rateLimiter } from "./middlewares";
+import routes from "./routes/routes";
 import AppError from "@shared/errors/AppError";
+import { IHttp } from "../models/IHttp";
 
 export class Express implements IHttp<Router> {
-    app: coreExpress;
+    private app: coreExpress;
     routes: Router;
 
     constructor() {

@@ -1,13 +1,9 @@
-import { Http } from "./infra/http";
-import { Database } from "./infra/database";
+import { Http } from "./infra/http/";
+import { Database } from "./infra/database/";
 
 export default class App {
-    constructor() {
-        this.initialization();
-    }
-
-    private async initialization(): Promise<void> {
-        await Http.initialization();
-        await Database.initialization();
+    public async initialization(): Promise<void> {
+        await new Http().initialization();
+        await new Database().initialization();
     }
 }
