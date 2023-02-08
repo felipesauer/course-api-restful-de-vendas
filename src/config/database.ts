@@ -4,7 +4,6 @@ interface IDatabaseConfig {
     config: {
         typeorm: DataSourceOptions;
     };
-    driver: string;
 }
 
 export default {
@@ -22,5 +21,4 @@ export default {
             migrations: ["./src/shared/infra/database/typeorm/migrations/*.ts"],
         },
     },
-    driver: "typeorm",
 } as IDatabaseConfig;

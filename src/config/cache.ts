@@ -4,7 +4,6 @@ interface ICacheConfig {
     config: {
         redis: RedisOptions;
     };
-    driver: string;
 }
 
 export default {
@@ -15,5 +14,4 @@ export default {
             password: process.env.REDIS_PASS || undefined,
         },
     },
-    driver: "redis",
 } as ICacheConfig;
