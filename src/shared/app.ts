@@ -1,9 +1,9 @@
-import { Http } from "./infra/http/";
-import { Database } from "./infra/database/";
+import { Express } from "./infra/http/express/Express";
+import { Typeorm } from "./infra/database/typeorm/Typeorm";
 
 export default class App {
-    public async initialization(): Promise<void> {
-        await new Http().initialization();
-        await new Database().initialization();
+    public async initialize(): Promise<void> {
+        new Express().initialize();
+        new Typeorm().initialize();
     }
 }
