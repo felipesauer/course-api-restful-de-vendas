@@ -24,16 +24,29 @@ export default {
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     collectCoverageFrom: [
-        "<rootDir>/src/shared/cache",
+        "<rootDir>/src/shared/cache/**/*.ts",
+        "<rootDir>/src/shared/infra/**/*.ts",
+        "<rootDir>/src/shared/providers/**/*.ts",
+
         "!<rootDir>/src/shared/cache/index.ts",
         "!<rootDir>/src/shared/cache/models/*.ts",
         "!<rootDir>/src/shared/cache/redis/container/*.ts",
+        "!<rootDir>/src/shared/cache/__tests__/mocks/*.ts",
+
         "!<rootDir>/src/shared/container/*.ts",
         "!<rootDir>/src/shared/errors/*.ts",
-        "!<rootDir>/src/shared/infra/**/*.ts",
-        "<rootDir>/src/shared/providers",
+
+        "!<rootDir>/src/shared/infra/http/models/*.ts",
+        "!<rootDir>/src/shared/infra/http/express/routes/*.ts",
+        "!<rootDir>/src/shared/infra/http/express/Express.ts",
+
+        "!<rootDir>/src/shared/infra/database/models/*.ts",
+        "!<rootDir>/src/shared/infra/database/typeorm/migrations/*.ts",
+        "!<rootDir>/src/shared/infra/database/typeorm/DataSource.ts",
+
         "!<rootDir>/src/shared/providers/token/models/*.ts",
         "!<rootDir>/src/shared/providers/token/index.ts",
+
         "!<rootDir>/src/shared/providers/hash/models/*.ts",
         "!<rootDir>/src/shared/providers/hash/index.ts",
     ],
