@@ -1,4 +1,4 @@
 export interface IHttp<T> {
-    initialization(): Promise<void>;
+    initialize(): Promise<void>;
     routes: T;
 }

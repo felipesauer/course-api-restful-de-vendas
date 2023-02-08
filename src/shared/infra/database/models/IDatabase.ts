@@ -1,4 +1,4 @@
 export interface IDatabase<T> {
-    initialization(): Promise<void>;
+    initialize(): Promise<void>;
     dataSource: T;
 }
