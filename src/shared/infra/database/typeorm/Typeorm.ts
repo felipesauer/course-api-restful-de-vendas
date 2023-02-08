@@ -9,7 +9,7 @@ export class Typeorm implements IDatabase<DataSourceTypeorm> {
         this.dataSource = DataSource;
     }
 
-    async initialization(): Promise<void> {
+    async initialize(): Promise<void> {
         await this.dataSource
             .initialize()
             .then(() => console.log("Database connected!"))

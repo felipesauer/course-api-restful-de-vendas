@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { cache } from "@shared/cache";
 import AppError from "@shared/errors/AppError";
+import { RateLimiterMemory } from "rate-limiter-flexible";
 
 export default async function rateLimiter(
     request: Request,
@@ -8,7 +8,11 @@ export default async function rateLimiter(
     next: NextFunction,
 ): Promise<void> {
     try {
-        await cache.rateLimiter(request.ip);
+        await new RateLimiterMemory({
+            points: 6,
+            duration: 1,
+        }).consume(request.ip);
+
         return next();
     } catch (error) {
         throw new AppError(error as string, 409);

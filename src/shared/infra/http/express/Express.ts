@@ -8,7 +8,7 @@ import express, {
 } from "express";
 import cors from "cors";
 import { errors } from "celebrate";
-import { rateLimiter } from "./middlewares";
+import rateLimiter from "./middlewares/rateLimiter";
 import routes from "./routes/routes";
 import AppError from "@shared/errors/AppError";
 import { IHttp } from "../models/IHttp";
@@ -22,7 +22,7 @@ export class Express implements IHttp<Router> {
         this.routes = routes;
     }
 
-    async initialization(): Promise<void> {
+    async initialize(): Promise<void> {
         this.app
             .use(cors())
             .use(express.json())

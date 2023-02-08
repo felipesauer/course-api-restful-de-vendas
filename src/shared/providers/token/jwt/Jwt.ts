@@ -1,11 +1,13 @@
-import { IResponseToken, IToken } from "../models/IToken";
+import { IGenerateToken, IVerifyToken, IToken } from "../models/IToken";
 import { sign, verify } from "jsonwebtoken";
 import auth from "@config/auth";
 import ms from "ms";
+import AppError from "@shared/errors/AppError";
 
 export class Jwt implements IToken {
-    public async generate(payload: string): Promise<IResponseToken> {
-        const token = sign({ payload }, auth.jwt.secret as string, {
+    public async generate(payload: string): Promise<IGenerateToken> {
+        const token = sign({}, auth.jwt.secret as string, {
+            subject: payload,
             expiresIn: ms(auth.jwt.expiresIn),
         });
 
@@ -15,12 +17,16 @@ export class Jwt implements IToken {
         };
     }
 
-    public async verify(token: string): Promise<boolean> {
+    public async verify<T>(token: string): Promise<IVerifyToken<T>> {
         try {
-            verify(token, auth.jwt.secret as string);
-            return true;
+            const payload = verify(token, auth.jwt.secret as string);
+
+            return {
+                token,
+                payload: payload as T,
+            };
         } catch (error) {
-            return false;
+            throw new AppError(String(error));
         }
     }
 }
