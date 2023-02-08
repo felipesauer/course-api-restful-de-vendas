@@ -35,8 +35,8 @@ export class FakeCreateClientRedis implements ICreateClientRedis {
         return value ? String(value) : null;
     }
 
-    public async del(...args: RedisKey[]): Promise<number> {
-        args.forEach(k => delete this.mockCache[String(k)]);
+    public async del(key: RedisKey): Promise<number> {
+        delete this.mockCache[key as string];
         return 1;
     }
 }

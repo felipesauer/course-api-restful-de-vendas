@@ -1,19 +1,33 @@
 import "reflect-metadata";
-import { FakeCreateClientRedis } from "../mocks/FakeCreateClientRedis.mock";
 import { Redis } from "../../redis/Redis";
+import { FakeCreateClientRedis } from "../mocks/FakeCreateClientRedis.mock";
+import { Redis as CreateClient } from "ioredis";
 
-let fakeCreateClientRedis: FakeCreateClientRedis;
 let redis: Redis;
+let fakeCreateClientRedis: FakeCreateClientRedis;
 
 describe("Redis", () => {
     beforeAll(() => {
         fakeCreateClientRedis = new FakeCreateClientRedis();
-        redis = new Redis({
-            client: fakeCreateClientRedis.client,
-        });
+
+        jest.spyOn(CreateClient.prototype, "connect").mockImplementation(
+            async () => {
+                "connect";
+            },
+        );
+
+        redis = new Redis();
+    });
+
+    it("should be able to normalize connection cache", async () => {
+        const normalize = await redis.normalize();
+
+        expect(normalize).toBe(redis);
     });
 
     it("should be able to save value in cache", async () => {
+        redis.client = fakeCreateClientRedis.client;
+
         await redis.save("save", { id: 1 });
 
         const value = await redis.recover<{ id: string }>("save");
@@ -26,6 +40,8 @@ describe("Redis", () => {
     });
 
     it("should be able to recover value in cache", async () => {
+        redis.client = fakeCreateClientRedis.client;
+
         await redis.save("recover", { id: 1 });
 
         const value = await redis.recover<{ id: string }>("recover");
@@ -38,6 +54,8 @@ describe("Redis", () => {
     });
 
     it("should be able to invalidate value in cache", async () => {
+        redis.client = fakeCreateClientRedis.client;
+
         await redis.save("invalidate", { id: 1 });
 
         await redis.invalidate("invalidate");

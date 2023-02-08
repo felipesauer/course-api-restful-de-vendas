@@ -1,8 +1,10 @@
 import "dotenv/config";
 import auth from "@config/auth";
 import { Jwt } from "@shared/providers/token/jwt/Jwt";
-import { IResponseToken } from "../../../token/models/IToken";
+import { IGenerateToken, IVerifyToken } from "../../../token/models/IToken";
 import ms from "ms";
+import AppError from "@shared/errors/AppError";
+import { ITokenPayload } from "@shared/infra/http/express/middlewares/isAuthenticated";
 
 let jwt: Jwt;
 
@@ -15,7 +17,7 @@ describe("Jwt", () => {
         const token = await jwt.generate("api-restful");
 
         expect(token).toEqual(
-            expect.objectContaining<IResponseToken>({
+            expect.objectContaining<IGenerateToken>({
                 token: token.token,
                 expiresIn: token.expiresIn,
             }),
@@ -29,12 +31,19 @@ describe("Jwt", () => {
 
         const verify = await jwt.verify(token.token);
 
-        expect(verify).toBe(true);
+        expect(verify).toEqual(
+            expect.objectContaining<IVerifyToken<ITokenPayload>>({
+                token: token.token,
+                payload: verify.payload as ITokenPayload,
+            }),
+        );
     });
 
     it("should be able not to verify token", async () => {
-        const verify = await jwt.verify("");
-
-        expect(verify).toBe(false);
+        try {
+            await jwt.verify("");
+        } catch (error) {
+            expect(error).toBeInstanceOf(AppError);
+        }
     });
 });
