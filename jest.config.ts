@@ -27,6 +27,10 @@ export default {
         "<rootDir>/src/shared/cache/**/*.ts",
         "<rootDir>/src/shared/infra/**/*.ts",
         "<rootDir>/src/shared/providers/**/*.ts",
+        "<rootDir>/src/modules/customers/services/*.ts",
+        "<rootDir>/src/modules/orders/services/*.ts",
+        "<rootDir>/src/modules/products/services/*.ts",
+        "<rootDir>/src/modules/users/services/*.ts",
 
         "!<rootDir>/src/shared/cache/index.ts",
         "!<rootDir>/src/shared/cache/models/*.ts",
@@ -40,9 +44,7 @@ export default {
         "!<rootDir>/src/shared/infra/http/express/routes/*.ts",
         "!<rootDir>/src/shared/infra/http/express/Express.ts",
 
-        "!<rootDir>/src/shared/infra/database/models/*.ts",
-        "!<rootDir>/src/shared/infra/database/typeorm/migrations/*.ts",
-        "!<rootDir>/src/shared/infra/database/typeorm/DataSource.ts",
+        "!<rootDir>/src/shared/infra/database/**/*.ts",
 
         "!<rootDir>/src/shared/providers/token/models/*.ts",
         "!<rootDir>/src/shared/providers/token/index.ts",
