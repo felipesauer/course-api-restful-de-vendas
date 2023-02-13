@@ -14,8 +14,8 @@ describe("CreateUser", () => {
 
     it("should be able to create a new user", async () => {
         const user = await createUserService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
             password: "123",
         });
 
@@ -24,15 +24,15 @@ describe("CreateUser", () => {
 
     it("should not be able to create two users with the same email", async () => {
         await createUserService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
             password: "123",
         });
 
         expect(
             createUserService.execute({
-                name: "Felipe",
-                email: "test@test.com",
+                name: "user",
+                email: "email@email.com",
                 password: "123",
             }),
         ).rejects.toBeInstanceOf(AppError);
