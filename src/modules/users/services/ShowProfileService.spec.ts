@@ -3,6 +3,7 @@ import AppError from "@shared/errors/AppError";
 import { v4 as uuidv4 } from "uuid";
 import FakeUsersRepository from "../domain/repositories/fakes/FakeUsersRepository";
 import ShowProfileService from "./ShowProfileService";
+import { Bcryptjs } from "@shared/providers/hash/bcryptjs/Bcryptjs";
 
 let showProfileService: ShowProfileService;
 let fakeUsersRepository: FakeUsersRepository;
@@ -23,7 +24,7 @@ describe("ShowProfileService", () => {
         const user = await fakeUsersRepository.create({
             name: "user",
             email: "email@email.com",
-            password: "123",
+            password: await new Bcryptjs().generate("123"),
         });
 
         expect(

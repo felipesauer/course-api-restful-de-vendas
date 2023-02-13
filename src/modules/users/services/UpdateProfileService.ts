@@ -35,18 +35,16 @@ class UpdateProfileService {
             throw new AppError("Old password is required.");
         }
 
-        if (password && old_password) {
-            const checkOldPassword = await new Bcryptjs().compare(
-                old_password,
-                user.password,
-            );
+        const checkOldPassword = await new Bcryptjs().compare(
+            old_password as string,
+            user.password,
+        );
 
-            if (!checkOldPassword) {
-                throw new AppError("Old password does not match.");
-            }
-
-            user.password = await new Bcryptjs().generate(password);
+        if (!checkOldPassword) {
+            throw new AppError("Old password does not match.");
         }
+
+        user.password = await new Bcryptjs().generate(password as string);
 
         user.name = name;
         user.email = email;

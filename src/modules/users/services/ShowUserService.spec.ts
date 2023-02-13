@@ -3,6 +3,7 @@ import AppError from "@shared/errors/AppError";
 import { v4 as uuidv4 } from "uuid";
 import FakeUsersRepository from "../domain/repositories/fakes/FakeUsersRepository";
 import ShowUserService from "./ShowUserService";
+import { Bcryptjs } from "@shared/providers/hash/bcryptjs/Bcryptjs";
 
 let showUserService: ShowUserService;
 let fakeUsersRepository: FakeUsersRepository;
@@ -23,7 +24,7 @@ describe("ShowUserService", () => {
         const user = await fakeUsersRepository.create({
             name: "user",
             email: "email@email.com",
-            password: "123",
+            password: await new Bcryptjs().generate("123"),
         });
 
         expect(showUserService.execute({ user_id: user.id })).resolves.toEqual(

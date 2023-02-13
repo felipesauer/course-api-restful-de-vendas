@@ -32,7 +32,7 @@ describe("CreateSessionsService", () => {
 
         expect(
             createSessionsService.execute({
-                email: "email-2@email-2.com",
+                email: "email@email.com",
                 password: "1234",
             }),
         ).rejects.toBeInstanceOf(AppError);

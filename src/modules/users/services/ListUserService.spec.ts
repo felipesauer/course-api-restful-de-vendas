@@ -1,3 +1,4 @@
+import { Bcryptjs } from "@shared/providers/hash/bcryptjs/Bcryptjs";
 import "rate-limiter-flexible";
 import FakeUsersRepository from "../domain/repositories/fakes/FakeUsersRepository";
 import ListUserService from "./ListUserService";
@@ -15,7 +16,7 @@ describe("ListUserService", () => {
         const user = await fakeUsersRepository.create({
             name: "user",
             email: "email@email.com",
-            password: "123",
+            password: await new Bcryptjs().generate("123"),
         });
 
         expect(listUserService.execute()).resolves.toEqual(
