@@ -23,8 +23,8 @@ describe("DeleteCustomerService", () => {
 
     it("should be able to delete customer", async () => {
         const customer = await createCustomerService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         });
 
         expect(deleteCustomerService.execute(customer)).resolves;
@@ -33,13 +33,13 @@ describe("DeleteCustomerService", () => {
     it("should not be able to delete customer what not exist", async () => {
         const fakeCustomer: Omit<ICustomer, "created_at" | "updated_at"> = {
             id: uuidv4(),
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         };
 
         await createCustomerService.execute({
-            name: "Felipe",
-            email: "test1@test1.com",
+            name: "user",
+            email: "email-1@email-1.com",
         });
 
         expect(

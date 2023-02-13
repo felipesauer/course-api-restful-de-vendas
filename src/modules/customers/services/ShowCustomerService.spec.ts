@@ -21,8 +21,8 @@ describe("ShowCustomerService", () => {
 
     it("should be able show customer", async () => {
         const customer = await createCustomerService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         });
 
         expect(showCustomerService.execute(customer)).resolves.toEqual(

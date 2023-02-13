@@ -18,8 +18,8 @@ describe("ListCustomersService", () => {
 
     it("should be able in list customers", async () => {
         const customer = await createCustomerService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         });
 
         const listCustomers = await listCustomerService.execute();

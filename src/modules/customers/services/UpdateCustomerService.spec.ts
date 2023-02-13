@@ -23,12 +23,12 @@ describe("UpdateCustomerService", () => {
 
     it("should be able update customer", async () => {
         const customer = await createCustomerService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         });
 
-        customer.name = "Sauer";
-        customer.email = "sauer@test.com";
+        customer.name = "user-old";
+        customer.email = "user-old@test.com";
 
         expect(updateCustomerService.execute(customer)).resolves.toEqual(
             expect.objectContaining({
@@ -42,8 +42,8 @@ describe("UpdateCustomerService", () => {
     it("should not be able to update a customer that doesn't exist", async () => {
         const fakeCustomer: Omit<ICustomer, "created_at" | "updated_at"> = {
             id: uuidv4(),
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         };
 
         expect(
@@ -53,19 +53,19 @@ describe("UpdateCustomerService", () => {
 
     it("should not be able to update a customer when changed to an email already belonging to another customer", async () => {
         await createCustomerService.execute({
-            name: "Felipe",
-            email: "test@test.com",
+            name: "user",
+            email: "email@email.com",
         });
 
         const user = await createCustomerService.execute({
-            name: "Felipe2",
-            email: "test2@test2.com",
+            name: "user-2",
+            email: "email-2@email-2.comm",
         });
 
         const fakeCustomer: Omit<ICustomer, "created_at" | "updated_at"> = {
             id: user.id,
-            name: "Sauer",
-            email: "test@test.com",
+            name: "user-old",
+            email: "email@email.com",
         };
 
         expect(
