@@ -86,6 +86,9 @@ coverage/lcov-report/index.html
 Algo parecido deverá ser exibido
 ![image](https://user-images.githubusercontent.com/120697114/218764949-bece63be-3094-46a5-92dd-cb4f46eb7f45.png)
 
+Na raiz do projeto na pasta **doc** contém um *json* [collection](https://github.com/felipesauer/api-vendas/blob/main/doc/api-vendas.postman_collection.json) para importar dentro do Postman, e assim realizar teste reais na aplicação.
+
+
 ## 📦 Implantação
 
 Para a implantação da API deve ser gerado o build da mesma, o seguinte comando deve ser executado:
@@ -120,6 +123,7 @@ Este projeto está sob a licença [MIT](https://github.com/felipesauer/api-venda
 - [Jest](https://jestjs.io/pt-BR/) - Usado para realizar teste na aplicação
 - [Babel](https://babeljs.io/) - Usado para converter o código em typescript em javascript
 - Joi & Celebrate - Ambos usados para controle nos parâmetros das rotas da API
+- [Postman](https://www.postman.com/) - Usado para testar a API
 
 Existem outras ferramentas / Bibliotecas, porém as principais de destaque do projeto são essas.
 
