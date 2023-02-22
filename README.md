@@ -13,7 +13,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 
 ### 🔧 Instalação
 
-Depois de realizar as instalações do **[pré-requisitos](#-pré-requisitos)** na pasta do projeto execute os seguintes comandos.
+Depois de realizar as instalações do **[pré-requisitos](#-pré-requisitos)** na pasta do projeto, execute o seguinte comando.
 
 ```
 npm i
@@ -52,31 +52,31 @@ Algo parecido com isso deverá ser impresso no seu console
 
 ## ⚙️ Executando os testes
 
-Os teste é rastreado da seguinte forma:
+Os testes são rastreados da seguinte forma:
 
 ```
 ├── src
 |   └── modules
-│       └── customers/services
-|       └── orders/services
-|       └── products/services
-|       └── users/services
+│       └── customers/services/*.ts
+|       └── orders/services/*.ts
+|       └── products/services/*.ts
+|       └── users/services/*.ts
 |   └── shared
-|       └── cache/redis
-|       └── errors
-|       └── infra/http/express/middlewares
+|       └── cache/redis/*.ts
+|       └── errors/*.ts
+|       └── infra/http/express/middlewares/*.ts
 |       └── providers
-|           └── hash/bcryptjs
-|           └── token/jwt
+|           └── hash/bcryptjs/*.ts
+|           └── token/jwt/*.ts
 ```
 
-Os **tests** é executado com o seguinte comando:
+Os **testes** são executados com o seguinte comando:
 
 ```
 npm run test
 ```
 
-Após executado uma pasta é gerada na raiz do projeto chamada **coverage**, coverage é uma configuração do JEST para fins de visualizar a cobertura dos testes da aplicação.
+Após executado, uma pasta é gerada na raiz do projeto chamada **coverage**, coverage é uma configuração do JEST para fins de visualizar a cobertura dos testes da aplicação.
 
 Abra o **index.html** dentro da pasta **coverage**
 ```
