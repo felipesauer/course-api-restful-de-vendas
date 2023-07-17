@@ -1,58 +1,76 @@
-# Api Vendas
+# API Vendas
 
-O intuito da API é voltada para estudo, onde eu aplico algumas "skils" aprendidas decorrente a cursos feitos, seguindo o conceito de APIs RESTFUL.
+O objetivo desta API é proporcionar um ambiente de estudo onde eu aplico algumas habilidades adquiridas em cursos, seguindo o conceito de APIs RESTful.
 
-# 🚀 Começando
+## 🚀 Começando
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Estas instruções permitirão que você obtenha uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste. Consulte a seção **[Implantação](#-implantação)** para saber como implantar o projeto.
 
 ### 📋 Pré-requisitos
 
-![badge](https://img.shields.io/badge/NODEJS-≥v18.14.0-339933?style=for-the-badge&logo=nodedotjs) ![badge](https://img.shields.io/badge/POSTGRES-≥v12.12-4169E1?style=for-the-badge&logo=postgresql) ![badge](https://img.shields.io/badge/REDIS-≥v7.0.8-DC382D?style=for-the-badge&logo=redis) ![badge](https://img.shields.io/badge/NPM-≥v9.3.1-CB3837?style=for-the-badge&logo=npm)
+Certifique-se de ter as seguintes versões mínimas instaladas:
+
+- Node.js ≥v18.14.0 ![badge](https://img.shields.io/badge/NODEJS-≥v18.14.0-339933?style=for-the-badge&logo=nodedotjs)
+- PostgreSQL ≥v12.12 ![badge](https://img.shields.io/badge/POSTGRES-≥v12.12-4169E1?style=for-the-badge&logo=postgresql)
+- Redis ≥v7.0.8 ![badge](https://img.shields.io/badge/REDIS-≥v7.0.8-DC382D?style=for-the-badge&logo=redis)
+- NPM ≥v9.3.1 ![badge](https://img.shields.io/badge/NPM-≥v9.3.1-CB3837?style=for-the-badge&logo=npm)
 
 ### 🔧 Instalação
 
-Depois de realizar as instalações do **[pré-requisitos](#-pré-requisitos)** na pasta do projeto, execute o seguinte comando.
+Siga as etapas abaixo para configurar o projeto:
+
+1. Clone este repositório para sua máquina local.
 
 ```
-npm i
+git clone https://github.com/seu-usuario/api-vendas.git
 ```
 
-Altere o nome do arquivo **.env.exemplo** para **.env**:
+2. Acesse a pasta do projeto.
+
+```
+cd api-vendas
+```
+
+3. Instale as dependências do projeto.
+
+```
+npm install
+```
+
+4. Renomeie o arquivo **.env.exemplo** para **.env** e preencha as informações necessárias de configuração:
 
 ```properties
-# Api Config
-APP_SECRET= #Hash usado pela aplicação
-APP_PORT= #Porta usado pela aplicação
+# Configuração da API
+APP_SECRET= # Hash usado pela aplicação
+APP_PORT= # Porta usada pela aplicação
 
-# Redis Config
-REDIS_HOST= #Host do redis Ex.: localhost
-REDIS_PORT= #Porta do redis Ex.: 6379
-REDIS_PASS= #Senha do redis
+# Configuração do Redis
+REDIS_HOST= # Host do redis Ex.: localhost
+REDIS_PORT= # Porta do redis Ex.: 6379
+REDIS_PASS= # Senha do redis
 
-# Database Config
-DB_TYPE= #Tipo do banco de dados (postgres)
-DB_HOST= #Host do banco de dados Ex.: localhost
-DB_PORT= #Porta do banco de dados Ex.: 5432
-DB_USERNAME= #Username do banco de dados
-DB_PASSWORD= #Password do banco de dados
-DB_DATABASE= #Nome do banco de dados
+# Configuração do Banco de Dados
+DB_TYPE= # Tipo do banco de dados (postgres)
+DB_HOST= # Host do banco de dados Ex.: localhost
+DB_PORT= # Porta do banco de dados Ex.: 5432
+DB_USERNAME= # Nome de usuário do banco de dados
+DB_PASSWORD= # Senha do banco de dados
+DB_DATABASE= # Nome do banco de dados
 ```
 
-Depois do **.env** configurado execute o seguinte comando:
+5. Após configurar o arquivo **.env**, execute o seguinte comando para iniciar o servidor de desenvolvimento:
 
 ```
 npm run dev
 ```
 
-Algo parecido com isso deverá ser impresso no seu console
-![image](https://user-images.githubusercontent.com/120697114/218758173-0ad2cd5a-7bb0-40f9-b9d6-09803081cfce.png)
+6. O servidor de desenvolvimento será iniciado e você verá uma saída semelhante a esta no seu console:
 
+![image](https://user-images.githubusercontent.com/120697114/218758173-0ad2cd5a-7bb0-40f9-b9d6-09803081cfce.png)
 
 ## ⚙️ Executando os testes
 
-Os testes são rastreados da seguinte forma:
+Os testes são organizados da seguinte forma:
 
 ```
 ├── src
@@ -70,40 +88,39 @@ Os testes são rastreados da seguinte forma:
 |           └── token/jwt/*.ts
 ```
 
-Os **testes** são executados com o seguinte comando:
+Execute os **testes** com o seguinte comando:
 
 ```
 npm run test
 ```
 
-Após executado, uma pasta é gerada na raiz do projeto chamada **coverage**, coverage é uma configuração do JEST para fins de visualizar a cobertura dos testes da aplicação.
+Após a execução, será gerada uma pasta chamada **coverage** na raiz do projeto. A cobertura dos testes da aplicação pode ser visualizada abrindo o arquivo **index.html** dentro da pasta **coverage**:
 
-Abra o **index.html** dentro da pasta **coverage**
 ```
 coverage/lcov-report/index.html
 ```
 
-Algo parecido deverá ser exibido
+Você verá uma exibição semelhante a esta:
+
 ![image](https://user-images.githubusercontent.com/120697114/218764949-bece63be-3094-46a5-92dd-cb4f46eb7f45.png)
 
-Na raiz do projeto na pasta **doc** contém um *json* [collection](https://github.com/felipesauer/api-vendas/blob/main/doc/api-vendas.postman_collection.json) para importar dentro do Postman, e assim realizar teste reais na aplicação.
-
+Na pasta **doc** do projeto, você encontrará um arquivo JSON [collection](https://github.com/felipesauer/api-vendas/blob/main/doc/api-vendas.postman_collection.json) para importar no Postman e realizar testes reais na aplicação.
 
 ## 📦 Implantação
 
-Para a implantação da API deve ser gerado o build da mesma, o seguinte comando deve ser executado:
+Para implantar a API em um ambiente de produção, você deve gerar o build da mesma. Execute o seguinte comando:
 
 ```
 npm run build
 ```
 
-Uma parta chamada **dist** será criada na raiz do projeto, esse é a versão para produção.
+Uma pasta chamada **dist** será criada na raiz do projeto. Essa é a versão para produção.
 
-**Obs.:** O arquivo **.env** deve ser movido manualmente para para.
+**Observação:** O arquivo **.env** deve ser movido manualmente para o ambiente de produção.
 
 ## 🖇️ Colaborando
 
-O projeto é aberto para colaboração de qualquer pessoa.
+Este projeto está aberto para colaboração de qualquer pessoa.
 
 ## ✒️ Autores
 
@@ -111,21 +128,21 @@ O projeto é aberto para colaboração de qualquer pessoa.
 
 ## 📄 Licença
 
-Este projeto está sob a licença [MIT](https://github.com/felipesauer/api-vendas/blob/main/LICENSE).
+Este projeto está licenciado sob a licença [MIT](https://github.com/felipesauer/api-vendas/blob/main/LICENSE).
 
 ## 🛠️ Construído com
 
 - [Redis](https://redis.io/) - Usado para cache na aplicação
-- [Node JS](https://nodejs.org/en/) - Usado para interpretar o javascript/typescript
-- [Postgres](https://www.postgresql.org/) - Banco de dados utilizado na API
+- [Node.js](https://nodejs.org/en/) - Usado para interpretar o JavaScript/TypeScript
+- [PostgreSQL](https://www.postgresql.org/) - Banco de dados utilizado na API
 - [Express](https://expressjs.com/pt-br/) - Responsável pelas rotas da API
-- [Typescript](https://www.typescriptlang.org/) - Sim ❤️
-- [Jest](https://jestjs.io/pt-BR/) - Usado para realizar teste na aplicação
-- [Babel](https://babeljs.io/) - Usado para converter o código em typescript em javascript
+- [TypeScript](https://www.typescriptlang.org/) - Sim ❤️
+- [Jest](https://jestjs.io/pt-BR/) - Usado para realizar testes na aplicação
+- [Babel](https://babeljs.io/) - Usado para converter o código TypeScript em JavaScript
 - Joi & Celebrate - Ambos usados para controle nos parâmetros das rotas da API
 - [Postman](https://www.postman.com/) - Usado para testar a API
 
-Existem outras ferramentas / Bibliotecas, porém as principais de destaque do projeto são essas.
+Existem outras ferramentas/bibliotecas utilizadas no projeto, mas as mencionadas acima são as principais.
 
 ---
 ⌨️ com ❤️ por [Felipe Sauer](https://github.com/felipesauer) 😊
