@@ -6,10 +6,13 @@
   </p>
   <p>
     <a href="https://www.udemy.com/course/api-restful-de-vendas/" target="_blank">Curso</a>&nbsp;&nbsp;|&nbsp;
-    <a href="https://www.udemy.com/certificate/UC-e571bec0-4784-42b7-9d45-0fc5d3960c1c/"
-      target="_blank">Certificado</a>&nbsp;&nbsp;|&nbsp;
-    <a href="https://www.linkedin.com/in/felipe-sauer/" target="_blank">Linkedin</a>
+    <a href="https://www.udemy.com/certificate/UC-e571bec0-4784-42b7-9d45-0fc5d3960c1c/" target="_blank">Certificado</a>
   </p>
+    <p>
+        <a href="https://github.com/felipesauer/" target="_blank">Github</a>&nbsp;&nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/in/felipe-sauer/" target="_blank">Linkedin</a>&nbsp;&nbsp;|&nbsp;
+        <a href="https://www.instagram.com/felipesauer.dev/" target="_blank">Instagram</a>
+      </p>
 </div>
 
 <br>
