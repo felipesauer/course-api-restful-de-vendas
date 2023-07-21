@@ -22,7 +22,6 @@
     <img src="https://img.shields.io/badge/NODEJS-^v18.14.0-339933?style=for-the-badge&logo=nodedotjs">
     <img src="https://img.shields.io/badge/POSTGRES-^v12.12-4169E1?style=for-the-badge&logo=postgresql">
     <img src="https://img.shields.io/badge/REDIS-^v7.0.8-DC382D?style=for-the-badge&logo=redis">
-    <img src="https://img.shields.io/badge/NPM-^v9.3.1-CB3837?style=for-the-badge&logo=npm">
     <img src="https://img.shields.io/badge/BABEL-^7.20.7-f5da55?style=for-the-badge&logo=babel">
     <img src="https://img.shields.io/badge/ESLINT-^8.32.0-4B32C3?style=for-the-badge&logo=eslint">
     <img src="https://img.shields.io/badge/JEST-^29.3.1-15c213?style=for-the-badge&logo=jest">
