@@ -15,7 +15,7 @@
 <br>
 
 <div align="center">
-    <h3>Tecnologias usadas</h3>
+    <h3>Principais tecnologias usadas</h3>
 </div>
 
 <div align="center" style="display: flex; align-items: center; justify-content: center;">
