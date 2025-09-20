@@ -101,6 +101,5 @@ Este projeto está licenciado sob a licença [MIT](https://github.com/felipesaue
   <p>
     <a href="https://github.com/felipesauer/" target="_blank">Github</a>&nbsp;&nbsp;|&nbsp;
     <a href="https://www.linkedin.com/in/felipe-sauer/" target="_blank">Linkedin</a>&nbsp;&nbsp;|&nbsp;
-    <a href="https://www.instagram.com/felipesauer.dev/" target="_blank">Instagram</a>
   </p>
 </div>
